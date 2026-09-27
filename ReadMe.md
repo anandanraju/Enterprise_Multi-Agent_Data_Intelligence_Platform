@@ -11,11 +11,10 @@ Instead of requiring users to manually write SQL queries, navigate dashboards, o
 The system combines:
 
 ```
-- Generative AI | Large Language Models (LLMs) | Multi-Agent Systems | Retrieval-Augmented Generation (RAG) 
+- Generative AI | Large Language Models (LLMs) | Multi-Agent Systems | RAG 
 - LangGraph | LangChain | Text-to-SQL | Model Context Protocol (MCP) | Tool Calling
 - Semantic Search | Vector Databases | AI-powered Analytics | Automated Visualization
 - Response Validation | Self-Correction | LLM Evaluation | FastAPI | Docker | AWS Bedrock
-
 ```
 ### Problem Statement
 
@@ -131,3 +130,4 @@ Specialized agents are responsible for individual tasks.
 ```
 
 ### 2. Enterprise Structured Data Analysis
+
