@@ -1,10 +1,10 @@
-# Enterprise Multi-Agent Data Intelligence & Decision Support Platform
+## Enterprise Multi-Agent Data Intelligence & Decision Support Platform
 
 > An agentic AI-powered enterprise analytics platform that enables users to interact with structured business data and unstructured enterprise knowledge using natural language.
 
 ---
 
-## Overview
+#### Overview
 
 The **Enterprise Multi-Agent Data Intelligence & Decision Support Platform** is a production-oriented Generative AI application designed to help business users analyze enterprise data through natural-language queries.
 
@@ -34,7 +34,7 @@ The system combines:
 
 ---
 
-## Problem Statement
+### Problem Statement
 
 Traditional enterprise analytics systems generally require users to:
 
@@ -64,9 +64,7 @@ Answering this question may require:
 
 The proposed platform automates this workflow using specialized AI agents.
 
----
-
-# Project Objectives
+### Project Objectives
 
 The primary objectives of this project are:
 
@@ -85,17 +83,16 @@ The primary objectives of this project are:
 - Provide a production-oriented GenAI architecture
 - Support deployment using Docker and AWS services
 
----
 
-# Core Capabilities
+### Core Capabilities
 
-## 1. Multi-Agent AI Architecture
+#### 1. Multi-Agent AI Architecture
 
 The platform uses a **LangGraph-based multi-agent architecture**.
 
 Specialized agents are responsible for individual tasks.
 
-### Agents
+##### Agents
 
 | Agent | Responsibility |
 |---|---|
@@ -106,7 +103,7 @@ Specialized agents are responsible for individual tasks.
 | Visualization Agent | Selects and generates suitable charts |
 | Validation Agent | Validates results and detects unsupported conclusions |
 
-### High-Level Workflow
+##### High-Level Workflow
 
 ```text
                          User
@@ -148,4 +145,3 @@ Specialized agents are responsible for individual tasks.
                     v           v
               Final Answer   Correction
 
-              
