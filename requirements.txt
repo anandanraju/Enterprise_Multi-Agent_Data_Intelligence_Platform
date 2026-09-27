@@ -1,0 +1,4 @@
+# Configuration & validation
+python-dotenv
+pydantic
+pydantic-settings
