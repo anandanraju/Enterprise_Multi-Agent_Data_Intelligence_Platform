@@ -1,8 +1,6 @@
 ## Enterprise Multi-Agent Data Intelligence & Decision Support Platform
 
-> An agentic AI-powered enterprise analytics platform that enables users to interact with structured business data and unstructured enterprise knowledge using natural language.
-
----
+An agentic AI-powered enterprise analytics platform that enables users to interact with structured business data and unstructured enterprise knowledge using natural language.
 
 #### Overview
 
@@ -31,8 +29,6 @@ The system combines:
 - FastAPI
 - Docker
 - AWS Bedrock
-
----
 
 ### Problem Statement
 
