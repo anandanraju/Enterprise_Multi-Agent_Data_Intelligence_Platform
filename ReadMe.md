@@ -43,4 +43,7 @@ Each agent performs a specialized task instead of relying on a single general-pu
 
 2. Natural Language to SQL
 
+
 Users can ask questions such as:
+
+-- Which region generated the highest revenue?
