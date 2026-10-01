@@ -6,9 +6,9 @@ import numpy as np
 import pandas as pd
 from faker import Faker
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
+
+## CONFIGURATION
+
 
 SEED = 42
 
@@ -18,13 +18,13 @@ np.random.seed(SEED)
 fake = Faker()
 Faker.seed(SEED)
 
-# Automatically detect project root.
-# Project structure:
-# Enterprise_Multi-Agent_Data_Intelligence/
-# ├── scripts/
-# ├── data/
-# │   └── raw/
-# └── ...
+## Automatically detect project root.
+## Project structure:
+## Enterprise_Multi-Agent_Data_Intelligence/
+## ├── scripts/
+## ├── data/
+## │   └── raw/
+## └── ...
 
 PROJECT_ROOT = Path(r"D:\Data Science\Projects\Ai_Creation\Enterprise_Multi-Agent_Data_Intelligence_Platform")
 RAW_DIR = PROJECT_ROOT / "data" / "raw"
@@ -34,10 +34,7 @@ RAW_DIR.mkdir(parents=True, exist_ok=True)
 START_DATE = date(2024, 1, 1)
 END_DATE = date(2026, 9, 30)
 
-
-# ============================================================
-# DATASET SIZE
-# ============================================================
+## DATASET SIZE
 
 CUSTOMER_COUNT = 1000
 PRODUCT_COUNT = 100
@@ -45,10 +42,7 @@ EMPLOYEE_COUNT = 500
 ORDER_COUNT = 50000
 SUPPORT_TICKET_COUNT = 10000
 
-
-# ============================================================
-# REFERENCE DATA
-# ============================================================
+## REFERENCE DATA
 
 REGIONS_CITIES = {
     "South": [
@@ -324,9 +318,9 @@ TICKET_STATUSES = [
 TICKET_STATUS_WEIGHTS = [0.72, 0.13, 0.10, 0.05]
 
 
-# ============================================================
-# HELPER FUNCTIONS
-# ============================================================
+
+## HELPER FUNCTIONS
+
 
 def random_date(start_date: date, end_date: date) -> date:
     """Generate a random date between two dates."""
@@ -397,9 +391,9 @@ def save_dataset(df: pd.DataFrame, filename: str) -> None:
     )
 
 
-# ============================================================
-# REGIONS
-# ============================================================
+
+## REGIONS
+
 
 def generate_regions() -> pd.DataFrame:
 
@@ -425,9 +419,9 @@ def generate_regions() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# CUSTOMERS
-# ============================================================
+
+## CUSTOMERS
+
 
 def generate_customers() -> pd.DataFrame:
 
@@ -476,9 +470,9 @@ def generate_customers() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# PRODUCTS
-# ============================================================
+
+## PRODUCTS
+
 
 def generate_products() -> pd.DataFrame:
 
@@ -531,9 +525,9 @@ def generate_products() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# EMPLOYEES
-# ============================================================
+
+## EMPLOYEES
+
 
 def generate_employees() -> pd.DataFrame:
 
@@ -579,9 +573,9 @@ def generate_employees() -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# ORDERS
-# ============================================================
+
+## ORDERS
+
 
 def generate_orders(
     customers: pd.DataFrame,
@@ -676,10 +670,10 @@ def generate_orders(
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# BUSINESS SCENARIO 1
-# CHENNAI Q2 2026 REVENUE DECLINE
-# ============================================================
+
+## BUSINESS SCENARIO 1
+## CHENNAI Q2 2026 REVENUE DECLINE
+
 
 def inject_chennai_q2_decline(
     orders: pd.DataFrame,
@@ -764,9 +758,9 @@ def inject_chennai_q2_decline(
     return orders
 
 
-# ============================================================
-# SALES
-# ============================================================
+
+## SALES
+
 
 def generate_sales(
     orders: pd.DataFrame,
@@ -814,9 +808,9 @@ def generate_sales(
     return sales
 
 
-# ============================================================
-# SUPPORT TICKETS
-# ============================================================
+
+## SUPPORT TICKETS
+
 
 def generate_support_tickets(
     customers: pd.DataFrame,
@@ -914,9 +908,9 @@ def generate_support_tickets(
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# TRANSACTIONS
-# ============================================================
+
+## TRANSACTIONS
+
 
 def generate_transactions(
     sales: pd.DataFrame,
@@ -947,9 +941,9 @@ def generate_transactions(
     return pd.DataFrame(rows)
 
 
-# ============================================================
-# DATA VALIDATION
-# ============================================================
+
+## DATA VALIDATION
+
 
 def validate_data(
     regions: pd.DataFrame,
@@ -1000,9 +994,9 @@ def validate_data(
             f"{df.isna().sum().sum():,}"
         )
 
-    # --------------------------------------------------------
-    # CUSTOMER FOREIGN KEY
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## CUSTOMER FOREIGN KEY
+    ## --------------------------------------------------------
 
     customer_ids = set(
         customers["customer_id"]
@@ -1043,9 +1037,9 @@ def validate_data(
         f"{invalid_transactions.sum()}"
     )
 
-    # --------------------------------------------------------
-    # PRODUCT FOREIGN KEY
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## PRODUCT FOREIGN KEY
+    ## --------------------------------------------------------
 
     product_ids = set(
         products["product_id"]
@@ -1062,9 +1056,9 @@ def validate_data(
         f"{invalid_order_products.sum()}"
     )
 
-    # --------------------------------------------------------
-    # SALES -> ORDERS
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## SALES -> ORDERS
+    ## --------------------------------------------------------
 
     order_ids = set(
         orders["order_id"]
@@ -1081,9 +1075,9 @@ def validate_data(
         f"{invalid_sales_orders.sum()}"
     )
 
-    # --------------------------------------------------------
-    # TRANSACTIONS -> SALES
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## TRANSACTIONS -> SALES
+    ## --------------------------------------------------------
 
     sales_ids = set(
         sales["sales_id"]
@@ -1100,9 +1094,9 @@ def validate_data(
         f"{invalid_transaction_sales.sum()}"
     )
 
-    # --------------------------------------------------------
-    # BUSINESS CALCULATIONS
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## BUSINESS CALCULATIONS
+    ## --------------------------------------------------------
 
     expected_profit = (
         orders["revenue"]
@@ -1119,9 +1113,9 @@ def validate_data(
         f"{profit_mismatch.sum()}"
     )
 
-    # --------------------------------------------------------
-    # NEGATIVE VALUES
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## NEGATIVE VALUES
+    ## --------------------------------------------------------
 
     negative_revenue = (
         orders["revenue"] < 0
@@ -1141,9 +1135,9 @@ def validate_data(
         f"{negative_quantity}"
     )
 
-    # --------------------------------------------------------
-    # DATE RANGE
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## DATE RANGE
+    ## --------------------------------------------------------
 
     print(
         f"\nOrder date range               : "
@@ -1152,9 +1146,9 @@ def validate_data(
         f"{orders['order_date'].max()}"
     )
 
-    # --------------------------------------------------------
-    # CHENNAI Q2 DEMO CHECK
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## CHENNAI Q2 DEMO CHECK
+    ## --------------------------------------------------------
 
     chennai_q1 = orders[
         (orders["city"] == "Chennai")
@@ -1215,16 +1209,16 @@ def validate_data(
     print("\nValidation completed.")
 
 
-# ============================================================
-# DATASET README
-# ============================================================
+
+## DATASET README
+
 
 def create_readme() -> None:
 
     readme_content = """
-# Enterprise Multi-Agent Data Intelligence & Decision Support Platform
+## Enterprise Multi-Agent Data Intelligence & Decision Support Platform
 
-## Dataset
+#### Dataset
 
 This directory contains synthetic enterprise data created for
 development, testing, analytics, Text-to-SQL, RAG, multi-agent
@@ -1232,7 +1226,7 @@ workflows and visualization.
 
 No real customers, employees or financial transactions are represented.
 
-## Files
+#### Files
 
 - Customers.csv / Customers.xlsx
 - Products.csv / Products.xlsx
@@ -1243,7 +1237,7 @@ No real customers, employees or financial transactions are represented.
 - Regions.csv / Regions.xlsx
 - Transactions.csv / Transactions.xlsx
 
-## Relationships
+#### Relationships
 
 Customers
     |
@@ -1261,7 +1255,7 @@ Orders
             |
             +---- Transactions
 
-## Primary Keys
+#### Primary Keys
 
 Regions
     region_id
@@ -1287,7 +1281,7 @@ Support_Tickets
 Transactions
     transaction_id
 
-## Important Foreign Keys
+#### Important Foreign Keys
 
 Orders.customer_id
     -> Customers.customer_id
@@ -1310,15 +1304,15 @@ Transactions.customer_id
 Support_Tickets.customer_id
     -> Customers.customer_id
 
-## Date Range
+#### Date Range
 
 2024-01-01 through 2026-09-30
 
-## Currency
+#### Currency
 
 Synthetic financial values are represented in INR.
 
-## Business Scenario
+#### Business Scenario
 
 A controlled synthetic revenue-decline scenario is introduced for
 Chennai during Q2 2026.
@@ -1339,7 +1333,7 @@ agent's ability to:
 The scenario is synthetic and must not be interpreted as real-world
 business information.
 
-## Reproducibility
+#### Reproducibility
 
 Random seed:
 
@@ -1357,9 +1351,9 @@ reproducible synthetic data.
     )
 
 
-# ============================================================
-# DATASET SUMMARY
-# ============================================================
+
+## DATASET SUMMARY
+
 
 def create_summary(
     datasets: dict,
@@ -1398,9 +1392,9 @@ def create_summary(
     )
 
 
-# ============================================================
-# MAIN
-# ============================================================
+
+## MAIN
+
 
 def main():
 
@@ -1422,9 +1416,9 @@ def main():
         "\nGenerating datasets...\n"
     )
 
-    # --------------------------------------------------------
-    # MASTER DATA
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## MASTER DATA
+    ## --------------------------------------------------------
 
     regions = generate_regions()
 
@@ -1454,16 +1448,16 @@ def main():
         "Employees",
     )
 
-    # --------------------------------------------------------
-    # TRANSACTIONAL DATA
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## TRANSACTIONAL DATA
+    ## --------------------------------------------------------
 
     orders = generate_orders(
         customers,
         products,
     )
 
-    # Inject controlled business scenario
+    ## Inject controlled business scenario
     orders = inject_chennai_q2_decline(
         orders,
         products,
@@ -1505,9 +1499,9 @@ def main():
         "Transactions",
     )
 
-    # --------------------------------------------------------
-    # VALIDATION
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## VALIDATION
+    ## --------------------------------------------------------
 
     validate_data(
         regions=regions,
@@ -1520,9 +1514,9 @@ def main():
         transactions=transactions,
     )
 
-    # --------------------------------------------------------
-    # DOCUMENTATION
-    # --------------------------------------------------------
+    ## --------------------------------------------------------
+    ## DOCUMENTATION
+    ## --------------------------------------------------------
 
     create_readme()
 
@@ -1553,9 +1547,9 @@ def main():
     )
 
 
-# ============================================================
-# ENTRY POINT
-# ============================================================
+
+## ENTRY POINT
+
 
 if __name__ == "__main__":
     main()

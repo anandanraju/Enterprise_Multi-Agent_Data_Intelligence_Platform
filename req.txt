@@ -306,3 +306,9 @@ python -c "from app.config.settings import settings; print('Database configured:
 python -m pip install pandas numpy Faker
 
 python -c "import pandas, numpy, faker; print('Dataset libraries: OK')"
+
+python -c "import pandas as pd; from pathlib import Path; p=Path('data/raw'); print('Customers:', len(pd.read_csv(p/'Customers.csv'))); print('Products:', len(pd.read_csv(p/'Products.csv'))); print('Orders:', len(pd.read_csv(p/'Orders.csv'))); print('Sales:', len(pd.read_csv(p/'Sales.csv'))); print('Employees:', len(pd.read_csv(p/'Employees.csv'))); print('Support Tickets:', len(pd.read_csv(p/'Support_Tickets.csv'))); print('Transactions:', len(pd.read_csv(p/'Transactions.csv')))"
+
+python -c "import pandas as pd; df=pd.read_csv('data/raw/Sales.csv'); df['order_date']=pd.to_datetime(df['order_date']); x=df[(df['city']=='Chennai') & (df['order_date'].dt.year==2026)]; print(x.groupby(x['order_date'].dt.quarter)['revenue'].agg(['count','sum']).to_string())"
+
+python -m pip freeze > requirements.txt
