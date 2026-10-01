@@ -9,6 +9,8 @@ __pycache__/
 
 logs/
 
+req.txt
+
 data/raw/*
 data/processed/*
 
